@@ -1,0 +1,14 @@
+{
+  "name": "tpc-website",
+  "version": "1.0.0",
+  "description": "The Powerstream Church Website",
+  "main": "index.js",
+  "scripts": {
+    "compile-sass": "node-sass sass/main.scss css/style.css  -w"
+  },
+  "author": "Oladetoun Temitayo Micheal",
+  "license": "ISC",
+  "dependencies": {
+    "node-sass": "^4.14.1"
+  }
+}

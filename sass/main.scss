@@ -1,0 +1,419 @@
+//Reset CSS
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Epilogue";
+}
+body,
+html {
+  overflow: hidden;
+}
+.carousel-control-next,
+.carousel-control-prev {
+  width: 10%;
+}
+
+/*------
+
+
+Animation
+
+
+---------*/
+
+
+@keyframes opacity {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+    transform: translateY(-1em);
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  80% {
+    transform: translateX(10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes shake {
+  0% {
+    transform: rotate(-10deg);
+  }
+
+  50% {
+    transform: rotate(5deg);
+  }
+
+  100% {
+    transform: rotate(0);
+  }
+}
+
+@keyframes expand {
+  0% {
+    transform: scale(0);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  80% {
+    transform: translateX(-10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+
+@keyframes slightShake {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  80% {
+    transform: translateY(-5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0;
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes spinNegative {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+/* -------
+
+Variables
+
+
+----------*/
+
+//Fonts
+$primary-font: "Open Sans";
+$secondary-font: "Epilogue";
+
+//Colors
+$primary-black: #000;
+$primary-white: #ffff;
+$primary-smokewhite: #fafafa;
+$primary-blue: #007bbf;
+$primary-grey: #f8f8f8;
+
+$secondary-black: #212121;
+$secondary-grey: #707070;
+
+/* -------
+
+
+Desktop Styles
+
+-------*/
+
+.header {
+  position: absolute;
+  top: 0;
+  z-index: 3;
+  display: flex;
+  width: 100%;
+  padding: 0.5em 2em;
+  justify-content: space-between;
+
+  &__logo {
+    width: 5em;
+  }
+  &__menu {
+    width: 2.5em;
+    padding-top: 1em;
+  }
+  &__middle {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: $primary-black;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: none;
+    animation: moveInRight 1s ease;
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+
+      li {
+        animation: 1.5s opacity;
+        margin-bottom: 3em;
+        list-style: none;
+      }
+    }
+
+    a {
+      font-size: 1.5em;
+      text-decoration: none;
+      color: $primary-smokewhite;
+      display: block;
+      margin: auto;
+    }
+  }
+  &__close {
+    width: 2em;
+    position: absolute;
+    right: 2em;
+    top: 2em;
+    animation: spin 2s;
+  }
+}
+
+@mixin slideStyle {
+  width: 100%;
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.slide {
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  position: relative;
+
+  &__join {
+    @include slideStyle();
+    background-image: linear-gradient(
+        to right,
+        rgba($primary-black, 0.6),
+        rgba($primary-black, 0.6)
+      ),
+      url("/images/background-5.jpg");
+  }
+  &__pray {
+    @include slideStyle();
+    background-image: linear-gradient(
+        to right,
+        rgba($primary-black, 0.6),
+        rgba($primary-black, 0.6)
+      ),
+      url("/images/background-2.jpg");
+  }
+  &__worship {
+    @include slideStyle();
+    background-image: linear-gradient(
+        to right,
+        rgba($primary-black, 0.6),
+        rgba($primary-black, 0.6)
+      ),
+      url("/images/background-4.jpg");
+  }
+  &__grow {
+    @include slideStyle();
+    background-image: linear-gradient(
+        to right,
+        rgba($primary-black, 0.6),
+        rgba($primary-black, 0.6)
+      ),
+      url("/images/background-3.jpg");
+  }
+  &__learn {
+    @include slideStyle();
+    background-image: linear-gradient(
+        to right,
+        rgba($primary-black, 0.6),
+        rgba($primary-black, 0.6)
+      ),
+      url("/images/background-1.jpg");
+  }
+  &__heading {
+    font-family: $secondary-font;
+    font-weight: 900;
+    padding-top: 1.5em;
+    font-size: 6em;
+    text-align: center;
+    color: $primary-white;
+  }
+  &__paragraph {
+    position: absolute;
+    width: 30%;
+    color: $primary-smokewhite;
+    font-family: $primary-font;
+    font-weight: 300;
+    font-size: 1em;
+    bottom: 3em;
+    left: 2em;
+  }
+  &__know-us {
+    width: 10em;
+    height: 3em;
+    border: none;
+    background-color: transparent;
+    color: $primary-grey;
+    display: block;
+    margin: 2em auto;
+
+    position: relative;
+    z-index: 2;
+
+    &:before {
+      transition: all 0.85s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      content: "";
+      border-radius: 0.2em;
+      width: 50%;
+      height: 100%;
+      background: $primary-blue;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+    &:hover {
+      &:before {
+        width: 100%;
+      }
+      &:active {
+        transform: translateY(-0.2em);
+      }
+    }
+    &:focus {
+      outline: none;
+    }
+  }
+  &__control-next,
+  &__control-prev {
+    span {
+      padding-bottom: 0.5em;
+      letter-spacing: 0.2em;
+      border-bottom: $primary-blue 0.1em solid;
+      transition: 0.5s ease;
+
+      &:hover {
+        transform: translateX(1em);
+      }
+      &:active {
+        transform: translateY(1em);
+      }
+    }
+  }
+}
+
+.footer {
+  position: absolute;
+  bottom: 3em;
+  right: 2em;
+  z-index: 2;
+
+  img {
+    width: 2em;
+    margin-right: 2em;
+  }
+}
+
+@media (max-width: 500px) {
+  .carousel-control-next,
+  .carousel-control-prev {
+    width: 20%;
+  }
+
+  .header {
+    padding: 0.5em 1em;
+  }
+  .slide {
+    &__heading {
+      font-size: 2em;
+      margin-top: 3em;
+    }
+
+    &__paragraph {
+      width: 100%;
+      text-align: center;
+      left: 0;
+      bottom: 9em;
+      font-size: 0.8em;
+    }
+    &__control-next,
+    &__control-prev {
+      span {
+        font-size: 0.8em;
+
+        &:hover {
+          transform: translateX(0.5em);
+        }
+        &:active {
+          transform: translateY(0.5em);
+        }
+      }
+    }
+  }
+  .footer {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    right: 0;
+
+    img {
+      margin: 0;
+    }
+  }
+}
+@media only screen and (max-width: 990px) and (orientation: landscape) {
+  .slide {
+    &__heading {
+      font-size: 3em;
+      padding-top: 3em;
+    }
+    &__paragraph {
+      display: none;
+    }
+  }
+}
