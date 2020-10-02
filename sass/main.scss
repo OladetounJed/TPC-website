@@ -4,10 +4,10 @@
   padding: 0;
   font-family: "Epilogue";
 }
-body,
-html {
-  overflow: hidden;
-}
+// body,
+// html {
+//   overflow: hidden;
+// }
 .carousel-control-next,
 .carousel-control-prev {
   width: 10%;
@@ -353,6 +353,14 @@ $primary-grey: #f8f8f8;
 $secondary-black: #212121;
 $secondary-grey: #707070;
 
+@mixin slideStyle {
+  width: 100%;
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 /* -------
 
 
@@ -378,7 +386,7 @@ Desktop Styles
   }
   &__middle {
     position: absolute;
-    animation: .5s shutters reverse;
+    animation: 0.5s shutters reverse;
     width: 100vw;
     height: 100vh;
     background-color: $primary-black;
@@ -387,8 +395,6 @@ Desktop Styles
     left: 0;
     right: 0;
     display: none;
-
-   
 
     ul {
       display: flex;
@@ -419,14 +425,6 @@ Desktop Styles
     top: 2em;
     animation: spin 2s;
   }
-}
-
-@mixin slideStyle {
-  width: 100%;
-  height: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
 }
 
 .slide {
@@ -470,7 +468,7 @@ Desktop Styles
         rgba($primary-black, 0.6),
         rgba($primary-black, 0.6)
       ),
-      url("/images/background-3.jpg");
+      url("/images/background-6.jpg");
   }
   &__learn {
     @include slideStyle();
@@ -553,7 +551,7 @@ Desktop Styles
   }
 }
 
-.footer {
+.icons {
   position: absolute;
   bottom: 1em;
   right: 2em;
@@ -577,7 +575,7 @@ Desktop Styles
   .slide {
     &__heading {
       font-size: 2em;
-      margin-top: 3em;
+      padding-top: 3em;
     }
 
     &__paragraph {
@@ -620,6 +618,288 @@ Desktop Styles
     }
     &__paragraph {
       display: none;
+    }
+  }
+}
+
+/*---------------
+
+
+About Us Styles
+
+
+-----------------*/
+
+.landing {
+  @include slideStyle();
+  background-image: linear-gradient(
+      to right,
+      rgba($primary-black, 0.6),
+      rgba($primary-black, 0.6)
+    ),
+    url("/images/background-8.jpg");
+
+  &__paragraph {
+    width: 100%;
+    text-align: center;
+    left: 0;
+    bottom: 1em;
+    font-size: 1.5em;
+    font-family: $primary-font;
+  }
+}
+
+.info {
+  max-width: 980px;
+  margin: 7em auto;
+  grid-row-gap: 30px;
+  grid-column-gap: 40px;
+  -moz-column-gap: 40px;
+  column-gap: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-auto-rows: 40px;
+
+  &__item {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    color: white;
+    border-radius: 0.5em;
+    overflow: hidden;
+    transition: all 0.5s ease;
+    box-shadow: 10px 10px 44px 0px rgba(0, 0, 0, 0.18);
+    transition: all 0.5s ease;
+
+    &:hover {
+      transform: scale(1.03);
+    }
+
+    &:nth-child(1) {
+      grid-row-end: span 7;
+    }
+    &:nth-child(2) {
+      grid-row-end: span 8;
+    }
+    &:nth-child(3) {
+      grid-row-end: span 7;
+    }
+    &:nth-child(4) {
+      grid-row-end: span 7;
+    }
+    &:nth-child(5) {
+      grid-row-end: span 7;
+    }
+    &:nth-child(6) {
+      grid-row-end: span 10;
+    }
+  }
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    &-con {
+      width: 100%;
+      height: 70%;
+      position: relative;
+
+      &--1 {
+        height: 80%;
+      }
+      &--2 {
+        height: 80%;
+      }
+      &--3 {
+        height: 50%;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background-image: linear-gradient(
+          rgba(0, 0, 0, 0.04),
+          rgba(0, 0, 0, 0.2),
+          rgba(0, 0, 0, 0.2),
+          rgba(0, 0, 0, 0.95)
+        );
+        top: 0;
+        left: 0;
+      }
+    }
+  }
+  &__text {
+    color: $primary-black;
+    font-size: 0.8em;
+    line-height: 1.9em;
+    padding-top: 1em;
+  }
+  &__heading {
+    position: absolute;
+    bottom: 0;
+    left: 1em;
+    z-index: 1;
+    font-size: 1.5em;
+  }
+}
+
+//Mobile Styles
+
+@media (max-width: 600px) {
+  .landing {
+    &__heading {
+      padding-top: 8em;
+    }
+    &__paragraph {
+      font-size: 1em;
+    }
+  }
+
+  .info__item {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+
+/*---------
+
+Pastor Styles
+
+
+--------------*/
+
+.pastor {
+  margin-top: 15em;
+  display: flex;
+  justify-content: space-evenly;
+
+  &__image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+
+    &-con {
+      width: 30%;
+      height: 25em;
+    }
+  }
+  &__info {
+    width: 50%;
+    text-align: center;
+    padding-top: 3em;
+  }
+  &__text {
+    width: 80%;
+    margin: 2em auto;
+    line-height: 1.9;
+    color: $secondary-grey;
+  }
+}
+
+//Mobile Styles
+
+@media (max-width: 900px) {
+  .pastor {
+    flex-direction: column;
+
+    &__image {
+      &-con {
+        width: 80%;
+        margin: 0 auto;
+      }
+    }
+    &__info {
+      width: 90%;
+      margin: 0 auto;
+    }
+    &__text {
+      width: 100%;
+    }
+  }
+}
+
+/*---------
+
+Footer Styles
+
+--------------*/
+
+.footer {
+  margin-top: 10em;
+  @include slideStyle();
+  background-color: black;
+  color: white;
+  position: relative;
+
+  &__logo {
+    padding-top: 5em;
+    width: 20em;
+    margin: 3em auto;
+
+    img {
+      width: 10em;
+      display: block;
+      margin: 0 auto;
+    }
+  }
+  &__icon {
+    width: 2em;
+    margin-right: 2em;
+  }
+  &__name {
+    text-align: center;
+  }
+  &__signature {
+    position: absolute;
+    bottom: 1em;
+    display: flex;
+    width: 60%;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: space-between;
+    border-top: solid $primary-blue 0.1em;
+    padding-top: 1em;
+  }
+}
+
+//Mobile Styles
+
+@media (max-width: 1200px) {
+  .footer {
+    &__signature {
+      width: 90%;
+    }
+    &__text {
+      font-size: 0.8em;
+    }
+  }
+}
+
+@media (max-width: 990px) {
+  .footer {
+    &__signature {
+      width: 90%;
+      flex-direction: column;
+    }
+    &__logo {
+      padding: 0;
+    }
+    &__name {
+      font-size: 1.5em;
+    }
+    &__text {
+      font-size: 0.8em;
+      text-align: center;
+    }
+    &__icons {
+      text-align: center;
+    }
+    &__icon {
+      margin: 2em 1em !important;
     }
   }
 }
